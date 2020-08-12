@@ -1,6 +1,6 @@
 #!groovy
 // Check ub1 properties
-properties([disableConcurrentBuilds()])
+properties([disableConcurrentBuilds()]) //allow only 1 build in time
 
 pipeline {
     agent {
