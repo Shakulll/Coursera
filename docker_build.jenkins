@@ -1,6 +1,6 @@
 #!groovy
-// Run docker build 11
-properties([disableConcurrentBuilds()])
+// run docker build
+properties([disableConcurrentBuilds()]) //allow only 1 build in time
 
 pipeline {
     agent {
@@ -10,14 +10,14 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
         timestamps()
     }
+    stages {
         stage("create docker image") {
             steps {
-                echo " ============== start building image =================="
-                dir ('docker/generator') {
-                	sh 'docker build -t generator:latest . '
+                echo "================start building image===================="
+                dir ('Docker/toolbox') {
+                        sh 'docker build -t antonlukinov/generator:lates . '
                 }
             }
         }
-
-    }
-}
+      }
+   }
