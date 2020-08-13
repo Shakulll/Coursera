@@ -26,17 +26,10 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 dir ('docker/toolbox') {
-                	sh 'docker build -t antonlukinov/generator:latest . '
+                	sh 'docker build -t generator:latest . '
                 }
             }
         }
-        stage("docker push") {
-            steps {
-                echo " ============== start pushing image =================="
-                sh '''
-                docker push antonlukinov/generator:latest
-                '''
-            }
-        }
+
     }
 }
