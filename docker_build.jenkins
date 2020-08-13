@@ -26,7 +26,7 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 dir ('docker/generator') {
-                	sh 'docker build -t antonlukinov/generator:latest . '
+                	sh 'docker build -t lukinov/generator:latest . '
                 }
             }
         }
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 echo " ============== start pushing image =================="
                 sh '''
-                docker push antonlukinov/generator:latest
+                docker push lukinov/generator:latest
                 '''
             }
         }
