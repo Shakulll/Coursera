@@ -85,3 +85,14 @@ volumes:
   html:
   vhost:
   dhparam:
+
+
+  COMMAND="cd /media/disk1/projects/SwissTherapy \
+&& docker-compose -f docker-compose.geo.yml stop django \
+&& git fetch && git checkout -f $GIT_COMMIT \
+&& docker-compose -f docker-compose.geo.yml up -d \
+&& sleep 60 \
+&& docker-compose -f docker-compose.geo.yml exec -T django python manage.py test --no-input\
+"
+
+ssh quantum@192.168.1.131 $COMMAND
