@@ -13,3 +13,7 @@ pipelines:
         script: # Modify the commands below to build your repository.
           - pip install -r requirements.txt
           - python -m pytest -v
+    - step:
+        deployment: staging
+        script:
+        - cat ./deploy.sh | ssh -T root@95.179.180.4
