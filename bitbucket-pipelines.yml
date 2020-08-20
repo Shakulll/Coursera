@@ -16,4 +16,4 @@ pipelines:
     - step:
         deployment: staging
         script:
-        - cat ./deploy.sh | ssh -T root@95.179.180.4
+        - cat ./deploy.sh | ssh -T root@45.77.138.134
