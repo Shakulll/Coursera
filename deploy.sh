@@ -1,8 +1,7 @@
-PROJECT=demo
-echo Docker Cleanup
-cd /home/ilukinov/pubmed_ariadna
-docker-compose -f docker-compose-${PROJECT}.yml down
-git fetch origin
-git reset --hard origin/master
-docker-compose -f docker-compose-${PROJECT}.yml build
-docker-compose -f docker-compose-${PROJECT}.yml up -d
+FROM alpine:3.5
+RUN apk add --update python py-pip
+COPY requirements.txt /src/requirements.txt
+RUN pip install -r /src/requirements.txt
+COPY app.py /src
+COPY buzz /src/buzz
+CMD python /src/app.py
